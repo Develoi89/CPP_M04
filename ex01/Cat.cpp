@@ -17,12 +17,12 @@ Cat::~Cat()
     std::cout << "Cat class destroyed" << std::endl;
 }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
     std::cout << "Meooow!" << std::endl;
 }
 
-std::string Cat::getType()
+std::string Cat::getType() const 
 {
     return _type;
 }

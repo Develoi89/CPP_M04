@@ -9,10 +9,12 @@ class Animal
 
 	public:
 		Animal();
-		Animal(Animal const & src);
-		~Animal();
+		Animal(Animal const & c);
+		virtual ~Animal();
 
-		Animal & operator=(Animal const & rhs);
+		Animal & operator=(Animal const & c);
+		virtual void makeSound() const;
+    	std::string getType() const;
 
 	protected:
 		std::string _type;

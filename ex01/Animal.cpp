@@ -17,8 +17,17 @@ Animal::~Animal()
 	std::cout << "Animal class destroyed." << std::endl;
 }
 
-Animal &				Animal::operator=( Animal const & c)
+Animal & Animal::operator=( Animal const & c)
 {
 	_type = c._type;
 	return *this;
+}
+
+void Animal::makeSound() const
+{
+}
+
+std::string Animal::getType() const
+{
+	return _type;
 }

@@ -17,12 +17,12 @@ Dog::~Dog()
     std::cout << "Dog class destroyed" << std::endl;
 }
 
-void Dog::makeSound()
+void Dog::makeSound() const
 {
     std::cout << "buff buff!" << std::endl;
 }
 
-std::string Dog::getType()
+std::string Dog::getType() const
 {
     return _type;
 }
