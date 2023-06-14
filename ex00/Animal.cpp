@@ -6,6 +6,11 @@ Animal::Animal()
 	std::cout << "Animal class created." << std::endl;
 }
 
+Animal::Animal(std::string type): _type(type)
+{
+	std::cout << "Animal class created as type: " << type << std::endl;	
+}
+
 Animal::Animal( const Animal & c )
 {
 	_type = c._type;
@@ -30,4 +35,9 @@ void Animal::makeSound() const
 std::string Animal::getType() const
 {
 	return _type;
+}
+
+void Animal::setType(std::string type)
+{
+	_type = type;
 }
