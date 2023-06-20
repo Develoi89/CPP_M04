@@ -1,7 +1,8 @@
 #include "Cure.hpp"
 
-Cure::Cure(): _type("Cure")
+Cure::Cure()
 {
+    _type = "cure";
 }
 Cure::Cure(Cure const & c)
 {

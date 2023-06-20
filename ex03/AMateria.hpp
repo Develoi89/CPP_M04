@@ -3,19 +3,28 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
     protected:
+
         std::string _type;
+        static std::vector<AMateria*> _floor;
+
     public:
+
         AMateria(std::string const & type);
         AMateria();
         AMateria(AMateria const & c);
         AMateria & operator = (AMateria const & c);
-        ~AMateria();
+        virtual ~AMateria();
         std::string const & getType() const; //Returns the materia type
+        void unequip();
+        static std::vector<AMateria*>& getFloor();
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

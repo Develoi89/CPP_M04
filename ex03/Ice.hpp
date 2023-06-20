@@ -1,11 +1,11 @@
-#ifndef ICE.HPP
-# define ICE.HPP
+#ifndef ICE_HPP
+# define ICE_HPP
+
 #include "AMateria.hpp"
 
-class Ice: public AMateria 
+
+class Ice: public AMateria
 {
-    private:
-        std::string _type;
     public:
         Ice();
         Ice(Ice const & c);
