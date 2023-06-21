@@ -2,7 +2,7 @@
 
 std::vector<AMateria*> AMateria::_floor;
 
-AMateria::AMateria(std::string const & type): _type(type)
+AMateria::AMateria(std::string const & type): _type(type), _cloned(0)
 {
 }
 
@@ -23,7 +23,13 @@ AMateria & AMateria::operator = (AMateria const & c)
 
 AMateria::~AMateria()
 {
-    // delete this;
+    if (_cloned == 1)
+        delete this;
+}
+
+void AMateria::setCloned(int i)
+{
+    _cloned = i;
 }
 
 std::string const & AMateria::getType() const
@@ -31,10 +37,15 @@ std::string const & AMateria::getType() const
     return _type;
 }
 
+void AMateria::setType(std::string type)
+{
+    _type = type;
+}
+
 void AMateria::use(ICharacter& target)
 {
     if (_type == "ice")
-        std::cout << "* shoots an ice bolt at " << target.getName() << "*" << std::endl;
+        std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
     else if (_type == "cure")
         std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

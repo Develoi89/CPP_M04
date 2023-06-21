@@ -4,9 +4,12 @@ SRC			=	AMateria.cpp\
 				Character.cpp\
 				Cure.cpp\
 				Ice.cpp\
+				MateriaSource.cpp\
 				main.cpp
 
 HDS			=	ICharacter.hpp\
+				IMateriaSource.hpp\
+				MateriaSource.hpp\
 				AMateria.hpp\
 				Character.hpp\
 				Cure.hpp\

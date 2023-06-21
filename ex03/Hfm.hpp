@@ -3,6 +3,8 @@
 #include "AMateria.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
+#include "MateriaSource.hpp"
+#include "IMateriaSource.hpp"
 #include <iostream>
 #include <string>
 #include <vector>

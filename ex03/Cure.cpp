@@ -20,5 +20,6 @@ Cure::~Cure()
 AMateria* Cure::clone() const
 {
     AMateria * c = new Cure;
+    c->setCloned(1);
     return c;
 }

@@ -12,8 +12,9 @@ class AMateria
 {
     protected:
 
-        std::string _type;
-        static std::vector<AMateria*> _floor;
+        std::string                     _type;
+        static std::vector<AMateria*>   _floor;
+        int                             _cloned;
 
     public:
 
@@ -22,7 +23,9 @@ class AMateria
         AMateria(AMateria const & c);
         AMateria & operator = (AMateria const & c);
         virtual ~AMateria();
-        std::string const & getType() const; //Returns the materia type
+        std::string const & getType() const;
+        void setType(std::string type);
+        void setCloned(int i);
         void unequip();
         static std::vector<AMateria*>& getFloor();
         virtual AMateria* clone() const = 0;
