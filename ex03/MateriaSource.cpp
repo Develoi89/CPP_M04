@@ -37,16 +37,15 @@ MateriaSource & MateriaSource::operator = (MateriaSource const & c )
 
 MateriaSource::~MateriaSource()
 {
-    // for (size_t i = 0; i < 4; i++)
-    // {
-    //     if (_spellBook[i])
-    //     {
-    //         std::cout << "hola" << std::endl;
-    //         delete _spellBook[i];
-    //     }
-    //     else
-    //         break;
-    // }
+    for (size_t i = 0; i < 4; i++)
+    {
+        if (_spellBook[i])
+        {
+            delete _spellBook[i];
+        }
+        else
+            break;
+    }
 }
 
 void MateriaSource::learnMateria(AMateria* m)
@@ -55,8 +54,7 @@ void MateriaSource::learnMateria(AMateria* m)
     {
         if (_spellBook[i] == NULL)
         {
-            _spellBook[i] = m->clone();
-            delete m;
+            _spellBook[i] = m;
             break;
         }
     }

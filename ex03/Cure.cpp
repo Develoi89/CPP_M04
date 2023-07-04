@@ -15,6 +15,8 @@ Cure & Cure::operator = (Cure const & c)
 }
 Cure::~Cure()
 {
+    // if (_cloned == 1)
+    //     delete (this);
 }
 
 AMateria* Cure::clone() const

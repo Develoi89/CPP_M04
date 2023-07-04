@@ -23,8 +23,8 @@ AMateria & AMateria::operator = (AMateria const & c)
 
 AMateria::~AMateria()
 {
-    if (_cloned == 1)
-        delete this;
+    // if (_cloned == 1)
+    //     delete this;
 }
 
 void AMateria::setCloned(int i)
@@ -47,7 +47,7 @@ void AMateria::use(ICharacter& target)
     if (_type == "ice")
         std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
     else if (_type == "cure")
-        std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+        std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 void AMateria::unequip()

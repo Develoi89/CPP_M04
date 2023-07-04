@@ -40,6 +40,12 @@ Character & Character::operator = (Character const & c)
 
 Character::~Character()
 {
+    for (size_t i = 0; i < 4; i++)
+    {
+        if(_inventory[i] != NULL)
+            delete _inventory[i];
+    }
+    
 }
 
 std::string const & Character::getName() const
