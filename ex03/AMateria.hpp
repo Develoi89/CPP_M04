@@ -14,7 +14,6 @@ class AMateria
 
         std::string                     _type;
         static std::vector<AMateria*>   _floor;
-        int                             _cloned;
 
     public:
 
@@ -25,7 +24,6 @@ class AMateria
         virtual ~AMateria();
         std::string const & getType() const;
         void setType(std::string type);
-        void setCloned(int i);
         void unequip();
         static std::vector<AMateria*>& getFloor();
         virtual AMateria* clone() const = 0;

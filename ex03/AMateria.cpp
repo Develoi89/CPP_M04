@@ -2,7 +2,7 @@
 
 std::vector<AMateria*> AMateria::_floor;
 
-AMateria::AMateria(std::string const & type): _type(type), _cloned(0)
+AMateria::AMateria(std::string const & type): _type(type)
 {
 }
 
@@ -23,13 +23,6 @@ AMateria & AMateria::operator = (AMateria const & c)
 
 AMateria::~AMateria()
 {
-    // if (_cloned == 1)
-    //     delete this;
-}
-
-void AMateria::setCloned(int i)
-{
-    _cloned = i;
 }
 
 std::string const & AMateria::getType() const

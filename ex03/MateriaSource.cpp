@@ -70,13 +70,11 @@ AMateria* MateriaSource::createMateria(std::string const & type)
             if (type == "ice")
             {
                 m = new Ice;
-                m->setCloned(1);
                 break;
             }
             else if (type == "cure")
             {
                 m = new Cure;
-                m->setCloned(1);
                 break;
             }
         }

@@ -23,6 +23,5 @@ Ice::~Ice()
 AMateria* Ice::clone() const
 {
     AMateria * c = new Ice;
-    c->setCloned(1);
     return c;
 }

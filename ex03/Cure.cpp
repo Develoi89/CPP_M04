@@ -15,13 +15,10 @@ Cure & Cure::operator = (Cure const & c)
 }
 Cure::~Cure()
 {
-    // if (_cloned == 1)
-    //     delete (this);
 }
 
 AMateria* Cure::clone() const
 {
     AMateria * c = new Cure;
-    c->setCloned(1);
     return c;
 }
