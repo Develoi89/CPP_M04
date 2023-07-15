@@ -5,11 +5,12 @@
 
 Character::Character(std::string Name): _name(Name)
 {
+    for (size_t i = 0; i < 4; i++)
+        _inventory[i] = NULL;
 }
 
-Character::Character(Character const & c)
+Character::Character(Character const & c): _name(c._name)
 {
-    _name = c._name;
     for (size_t i = 0; i < 4; i++)
     {
         if (_inventory[i] == NULL)
@@ -22,18 +23,17 @@ Character::Character(Character const & c)
     }  
 }
 
-Character & Character::operator = (Character const & c)
+Character & Character::operator=(Character const & c)
 {
-    _name = c._name;
+    std::cout << "entro" << std::endl;
     for (size_t i = 0; i < 4; i++)
     {
-        if (_inventory[i] == NULL)
+        if (_inventory[i])
+            delete _inventory[i];
+        if (c._inventory[i])
             _inventory[i] = c._inventory[i]->clone();
         else
-        {
             _inventory[i] = NULL;
-            _inventory[i] = c._inventory[i]->clone();
-        }
     }
     return *this;
 }
@@ -60,13 +60,20 @@ void Character::equip(AMateria* m)
         if (_inventory[i] == NULL)
         {
             _inventory[i] = m;
-            break;
+            return ;
+            // break;
         }
     }
+    std::cout << "Character " << this->_name << " can't be equiped with" << m->getType() << std::endl;
 }
 
 void Character::unequip(int idx)
 {
+     if (idx < 0 || idx >= 4 || !this->_inventory[idx])
+    {
+        std::cout << "Incorrect index" << std::endl;
+        return ;
+    }
     AMateria* tmp;
     if (_inventory[idx] && (idx >= 0 && idx < 4))
     {

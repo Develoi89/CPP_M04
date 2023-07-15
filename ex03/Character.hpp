@@ -8,13 +8,13 @@ class Character: public ICharacter
 {
     private:
 
-        std::string _name;
+        std::string const _name;
         AMateria* _inventory[4];
     public:
 
         Character(std::string Name);
         Character(Character const & c);
-        Character & operator = (Character const & c);
+        Character & operator=(Character const & c);
         ~Character();
 
         std::string const & getName() const;

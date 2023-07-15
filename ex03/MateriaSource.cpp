@@ -4,6 +4,11 @@
 
 MateriaSource::MateriaSource()
 {
+    for (size_t i = 0; i < 4; i++)
+    {
+        _spellBook[i] = NULL;
+    }
+    
 }
 
 MateriaSource::MateriaSource(MateriaSource const & c )
