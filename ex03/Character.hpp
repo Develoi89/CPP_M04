@@ -3,7 +3,6 @@
 
 #include "ICharacter.hpp"
 
-
 class Character: public ICharacter
 {
     private:
@@ -14,13 +13,14 @@ class Character: public ICharacter
 
         Character(std::string Name);
         Character(Character const & c);
-        Character & operator=(Character const & c);
+        Character& operator=(const Character& c);
         ~Character();
 
         std::string const & getName() const;
         void equip(AMateria* m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);
+        std::string getType(int idx);
 };
 
 #endif

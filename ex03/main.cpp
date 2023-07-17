@@ -1,37 +1,5 @@
 #include "Hfm.hpp"
 
-// int main()
-// {
-//     ICharacter* Cloud = new Character("Cloud");
-//     ICharacter* Sefirot = new Character("Sefirot");
-//     AMateria* first = new Ice;
-//     AMateria* second = new Cure;
-//     AMateria* third = second->clone();
-//     std::vector<AMateria*>& floor = AMateria::getFloor();
-
-//     Cloud->equip(first);
-//     Cloud->equip(third);
-
-//     Cloud->use(0, *Sefirot);
-//     Cloud->use(1, *Cloud);
-
-//     Cloud->unequip(0);
-//     Cloud->unequip(1);
-//     Cloud->use(0, *Sefirot);
-
-//     std::vector<AMateria*>::iterator it;
-
-//     for (it = floor.begin(); it != floor.end(); it++)
-//         std::cout << (*it)->getType() << " is on the floor." << std::endl;
-        
-//     delete first;
-//     delete second;
-//     delete third;
-//     delete Cloud;
-//     delete Sefirot;
-    
-//     return 0;
-// }
 
 int main()
 {
@@ -76,6 +44,7 @@ int main()
     me->unequip(1);
     delete src;
     delete me;
+    delete tmp;
     }
     
     std::cout << std::endl;
@@ -85,21 +54,17 @@ int main()
     // Crear dos personas. Equipar a una. Igualarlas. Cerrar.
     {
     IMateriaSource* src = new MateriaSource();
-    ICharacter* p1 = new Character("Player_1");
-    ICharacter* p2 = new Character("Player_2");
+    Character* p1 = new Character("Player_1");
+    Character* p2 = new Character("Player_2");
     AMateria* tmp;
 
     src->learnMateria(new Ice()); // Aprendemos la materia "ice"
     tmp = src->createMateria("ice"); // Creamos la materia "ice"
     p1->equip(tmp); // Equipamos el player_1
-    std::cout << p2->getName() << std::endl;
     *p2 = *p1; // Igualamos el player_2 al player_1 // ESTO NO
-    std::cout << p2->getName() << std::endl;
-    // p2 = p1; // Igualamos la dirección de memoria el player_2 al player_1 
-    // ESTO NO SE PUEDE HACER PORQUE ESTAMOS SOBREESCRIBIENDO P1, RETRASO
-    // p2 queda en el limbo, la direccion de memoria se reemplaza
     p1->use(0, *p2); // Ice ice used on bob
     p2->use(0, *p1); // Ice ice used on bob
+    std::cout << "first materia of p2 is " << p2->getType(0) << std::endl;
     delete src; // OJO QUE AQUÍ SE NOS QUEDABA UN LEAK
     delete p1;
     delete p2;
@@ -107,7 +72,6 @@ int main()
 
     std::cout << std::endl;
     std::cout << std::endl;
-    std::cout << "hola" << std::endl;
     // Constructor copia
     {
     IMateriaSource* src = new MateriaSource();
@@ -120,13 +84,12 @@ int main()
     tmp = src->createMateria("ice");
     // si equipamos p1, no hace falta hacer un delete porque p1 borra sus materias
     // en caso contrario, como tmp no se usa, hay que hacer un delete
-    // p1->equip(tmp); // Ice ice used on bob
+    p1->equip(tmp); // Ice ice used on bob
     p1->use(0, *p2); // Ice ice used on bob
     p2->use(0, *p1); // Ice ice used on bob
     delete p1;
     delete p2;
     delete src;
-    delete tmp;
     }
 
     std::cout << std::endl;
@@ -143,29 +106,3 @@ int main()
     }
     return (0);
 }
-
-
-// int main() 
-// {
-//     IMateriaSource* src = new MateriaSource(); 
-//     src->learnMateria(new Ice()); 
-//     src->learnMateria(new Cure());
-
-//     ICharacter* me = new Character("me");
-
-//     AMateria* tmp;
-//     tmp = src->createMateria("ice"); 
-//     me->equip(tmp);
-//     tmp = src->createMateria("cure"); 
-//     me->equip(tmp);
-
-//     ICharacter* bob = new Character("bob"); 
-
-//     me->use(0, *bob);
-//     me->use(1, *bob);
-
-//     delete bob; 
-//     delete me; 
-//     delete src;
-//     return 0; 
-// }

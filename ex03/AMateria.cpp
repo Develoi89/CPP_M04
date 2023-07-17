@@ -17,6 +17,7 @@ AMateria::AMateria(AMateria const & c)
 
 AMateria & AMateria::operator = (AMateria const & c)
 {
+    std::cout << "equal AM operator called" << std::endl;
     _type = c._type;
     return *this;
 }
@@ -38,9 +39,9 @@ void AMateria::setType(std::string type)
 void AMateria::use(ICharacter& target)
 {
     if (_type == "ice")
-        std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+        std::cout << " shoots an ice bolt at " << target.getName() << " *" << std::endl;
     else if (_type == "cure")
-        std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+        std::cout << " heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 void AMateria::unequip()

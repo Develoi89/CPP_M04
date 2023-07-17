@@ -10,6 +10,7 @@ Cure::Cure(Cure const & c)
 }
 Cure & Cure::operator = (Cure const & c)
 {
+    std::cout << "equal C operator called" << std::endl;
     _type = c._type;
     return *this;
 }

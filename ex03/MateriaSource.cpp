@@ -27,6 +27,7 @@ MateriaSource::MateriaSource(MateriaSource const & c )
 
 MateriaSource & MateriaSource::operator = (MateriaSource const & c )
 {
+    std::cout << "equal MS operator called" << std::endl;
     for (size_t i = 0; i < 4; i++)
     {
         if (_spellBook[i] == NULL)

@@ -12,6 +12,7 @@ Ice::Ice(Ice const & c)
 
 Ice & Ice::operator = (Ice const & c)
 {
+    std::cout << "equal I operator called" << std::endl;
     _type = c._type;
     return *this;
 }
@@ -22,6 +23,6 @@ Ice::~Ice()
 
 AMateria* Ice::clone() const
 {
-    AMateria * c = new Ice;
+    AMateria *c = new Ice;
     return c;
 }

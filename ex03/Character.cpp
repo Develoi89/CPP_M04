@@ -3,6 +3,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 
+
 Character::Character(std::string Name): _name(Name)
 {
     for (size_t i = 0; i < 4; i++)
@@ -11,21 +12,19 @@ Character::Character(std::string Name): _name(Name)
 
 Character::Character(Character const & c): _name(c._name)
 {
+    std::cout << "copy constructor called" << std::endl;
     for (size_t i = 0; i < 4; i++)
     {
-        if (_inventory[i] == NULL)
+        if (c._inventory[i])
             _inventory[i] = c._inventory[i]->clone();
         else
-        {
             _inventory[i] = NULL;
-            _inventory[i] = c._inventory[i]->clone();
-        }
     }  
 }
 
-Character & Character::operator=(Character const & c)
+Character& Character::operator=(const Character& c)
 {
-    std::cout << "entro" << std::endl;
+    std::cout << "equal Character opperator was called" << std::endl;
     for (size_t i = 0; i < 4; i++)
     {
         if (_inventory[i])
@@ -85,6 +84,18 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (_inventory[idx] && (idx >= 0 && idx < 4))
+    if ((_inventory[idx] != NULL) && (idx >= 0 && idx < 4))
+    {
+        std::cout << "* " << getName();
         _inventory[idx]->use(target);
+    }
+    else
+        std::cout << "...?" << std::endl;
+}
+
+std::string Character::getType(int idx)
+{
+    if (_inventory[idx] == NULL)
+        return "no one";
+    return _inventory[idx]->getType();
 }
