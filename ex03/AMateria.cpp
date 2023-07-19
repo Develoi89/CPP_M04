@@ -1,12 +1,12 @@
 #include "AMateria.hpp"
 
-std::vector<AMateria*> AMateria::_floor;
+AMateria* AMateria::_head;
 
-AMateria::AMateria(std::string const & type): _type(type)
+AMateria::AMateria(std::string const & type): _type(type), _next(NULL)
 {
 }
 
-AMateria::AMateria()
+AMateria::AMateria(): _next(NULL)
 {
 }
 
@@ -22,10 +22,6 @@ AMateria & AMateria::operator = (AMateria const & c)
     return *this;
 }
 
-AMateria::~AMateria()
-{
-}
-
 std::string const & AMateria::getType() const
 {
     return _type;
@@ -36,6 +32,16 @@ void AMateria::setType(std::string type)
     _type = type;
 }
 
+AMateria* AMateria::getNext()
+{
+    return _next;
+}
+
+void AMateria::setNext(AMateria* m)
+{
+    _next = m;
+}
+
 void AMateria::use(ICharacter& target)
 {
     if (_type == "ice")
@@ -44,12 +50,36 @@ void AMateria::use(ICharacter& target)
         std::cout << " heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
-void AMateria::unequip()
+AMateria* AMateria::getHead()
 {
-    _floor.push_back(this);
+    return _head;
 }
 
-std::vector<AMateria*>& AMateria::getFloor()
+void AMateria::unequip()
 {
-    return _floor;
+    if (_head == NULL)
+        _head = this;
+    else
+    {
+        AMateria* actual = _head;
+        while (actual->getNext() != NULL)
+            actual = actual->getNext();
+        actual->setNext(this);
+    }
+}
+
+AMateria::~AMateria()
+{
+    if (_head)
+    {
+        while ((_head != NULL) && (_head->_next != NULL))
+        {
+            AMateria* actual = _head;
+            while (actual->getNext() != NULL)
+                actual = actual->getNext();
+            delete actual;
+        }
+        if((_head->_next == NULL) && (_head != NULL))
+            delete _head;
+    }
 }

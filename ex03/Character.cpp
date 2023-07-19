@@ -78,7 +78,7 @@ void Character::unequip(int idx)
     {
         tmp = _inventory[idx];
         tmp->unequip();
-        _inventory[idx] = NULL; // still we should to know what should we do with the unnequiped materia...DEVELOPING
+        _inventory[idx] = NULL;
     }
 }
 

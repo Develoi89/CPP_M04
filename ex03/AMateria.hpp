@@ -3,17 +3,18 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 #include "ICharacter.hpp"
 
 class ICharacter;
+class FloorList;
 
 class AMateria
 {
     protected:
 
         std::string                     _type;
-        static std::vector<AMateria*>   _floor;
+        AMateria*                       _next;
+        static AMateria*               _head;
 
     public:
 
@@ -22,10 +23,13 @@ class AMateria
         AMateria(AMateria const & c);
         AMateria & operator = (AMateria const & c);
         virtual ~AMateria();
+
+        AMateria* getHead();
         std::string const & getType() const;
+        AMateria* getNext();
+        void setNext(AMateria* m);
         void setType(std::string type);
         void unequip();
-        static std::vector<AMateria*>& getFloor();
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };
