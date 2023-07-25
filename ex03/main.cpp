@@ -42,7 +42,6 @@ int main()
     AMateria* d = b->clone();
     ICharacter* Cloud = new Character("Cloud");
     ICharacter* Sefirot = new Character("Sefirot");
-    // FloorList* trash = a->getFloor();
     Cloud->equip(a);
     Cloud->equip(b);
     Cloud->equip(c);
@@ -53,10 +52,8 @@ int main()
     Cloud->unequip(3);
     Cloud->use(0, *Sefirot);
     Cloud->use(3, *Sefirot);
-    // delete a;
-    // delete b;
-    // delete c;
-    // delete d;
+    a->showFloor();
+
     delete Cloud;
     delete Sefirot;
     std::cout << "GGG" << std::endl;

@@ -60,7 +60,6 @@ void Character::equip(AMateria* m)
         {
             _inventory[i] = m;
             return ;
-            // break;
         }
     }
     std::cout << "Character " << this->_name << " can't be equiped with" << m->getType() << std::endl;

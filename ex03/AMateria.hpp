@@ -30,6 +30,7 @@ class AMateria
         void setNext(AMateria* m);
         void setType(std::string type);
         void unequip();
+        void showFloor();
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

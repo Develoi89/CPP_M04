@@ -68,6 +68,22 @@ void AMateria::unequip()
     }
 }
 
+void AMateria::showFloor()
+{
+    if(_head == NULL)
+        std::cout << "The floor es clean" << std::endl;
+    else
+    {
+        AMateria* actual = _head;
+        while (actual->getNext() != NULL)
+        {
+            std::cout << "On the floor is " << actual->getType() << " materia." << std::endl;
+            actual = actual->getNext();
+        }
+        std::cout << "On the floor is " << actual->getType() << " materia." << std::endl;
+    }
+}
+
 AMateria::~AMateria()
 {
     // if (_head)
