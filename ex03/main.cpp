@@ -20,7 +20,21 @@ int main()
     delete me;
     delete src;
     }
-    
+    std::cout << std::endl;
+    std::cout << std::endl;
+        // Utilizar p1 sin haber creado una materia
+    {
+    ICharacter  *p1 = new Character("Player_1");
+    ICharacter  *p2 = new Character("Player_2");
+
+    p1->use(0, *p2); // Ice ice used on bob
+    delete p1;
+    delete p2;
+    }
+
+    std::cout << std::endl;
+    std::cout << std::endl;
+
     {
     AMateria* a = new Ice();
     AMateria* b = new Cure();
@@ -48,88 +62,78 @@ int main()
     std::cout << "GGG" << std::endl;
     }
 
-    // std::cout << std::endl;
-    // std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    // {
-    // ICharacter* me = new Character("player_1");
-    // me->unequip(1);
-    // delete me;
-    // }
+    {
+    ICharacter* me = new Character("player_1");
+    me->unequip(1);
+    delete me;
+    }
     
-    // std::cout << std::endl;
-    // std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    // {
-    // ICharacter* me = new Character("player_1");
-    // IMateriaSource* src = new MateriaSource();
-    // src->learnMateria(new Ice());
-    // AMateria* tmp;
-    // tmp = src->createMateria("ice");
-    // me->equip(tmp);
-    // me->unequip(0);
-    // me->unequip(1);
-    // delete src;
-    // delete me;
-    // delete tmp;
-    // }
+    {
+    ICharacter* me = new Character("player_1");
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    AMateria* tmp;
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    me->unequip(0);
+    me->unequip(1);
+    delete src;
+    delete me;
+    delete tmp;
+    }
     
-    // std::cout << std::endl;
-    // std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
     
-    // // Asignación (igualación)
-    // // Crear dos personas. Equipar a una. Igualarlas. Cerrar.
-    // {
-    // IMateriaSource* src = new MateriaSource();
-    // Character* p1 = new Character("Player_1");
-    // Character* p2 = new Character("Player_2");
-    // AMateria* tmp;
+    // Asignación (igualación)
+    // Crear dos personas. Equipar a una. Igualarlas. Cerrar.
+    {
+    IMateriaSource* src = new MateriaSource();
+    Character* p1 = new Character("Player_1");
+    Character* p2 = new Character("Player_2");
+    AMateria* tmp;
 
-    // src->learnMateria(new Ice()); // Aprendemos la materia "ice"
-    // tmp = src->createMateria("ice"); // Creamos la materia "ice"
-    // p1->equip(tmp); // Equipamos el player_1
-    // *p2 = *p1; // Igualamos el player_2 al player_1 // ESTO NO
-    // p1->use(0, *p2); // Ice ice used on bob
-    // p2->use(0, *p1); // Ice ice used on bob
-    // std::cout << "first materia of p2 is " << p2->getType(0) << std::endl;
-    // delete src; // OJO QUE AQUÍ SE NOS QUEDABA UN LEAK
-    // delete p1;
-    // delete p2;
-    // }
+    src->learnMateria(new Ice()); // Aprendemos la materia "ice"
+    tmp = src->createMateria("ice"); // Creamos la materia "ice"
+    p1->equip(tmp); // Equipamos el player_1
+    *p2 = *p1; // Igualamos el player_2 al player_1 // ESTO NO
+    p1->use(0, *p2); // Ice ice used on bob
+    p2->use(0, *p1); // Ice ice used on bob
+    std::cout << "first materia of p2 is " << p2->getType(0) << std::endl;
+    delete src; // OJO QUE AQUÍ SE NOS QUEDABA UN LEAK
+    delete p1;
+    delete p2;
+    }
 
-    // std::cout << std::endl;
-    // std::cout << std::endl;
-    // // Constructor copia
-    // {
-    // IMateriaSource* src = new MateriaSource();
-    // Character *p1 = new Character("Player_1");
-    // Character *p2 = new Character(*p1);
-    // // *p2(dynamic_cast<ICharacter&>(*p1));
-    // AMateria* tmp;
+    std::cout << std::endl;
+    std::cout << std::endl;
+    // Constructor copia
+    {
+    IMateriaSource* src = new MateriaSource();
+    Character *p1 = new Character("Player_1");
+    Character *p2 = new Character(*p1);
+    AMateria* tmp;
 
-    // src->learnMateria(new Ice());
-    // tmp = src->createMateria("ice");
-    // // si equipamos p1, no hace falta hacer un delete porque p1 borra sus materias
-    // // en caso contrario, como tmp no se usa, hay que hacer un delete
-    // p1->equip(tmp); // Ice ice used on bob
-    // p1->use(0, *p2); // Ice ice used on bob
-    // p2->use(0, *p1); // Ice ice used on bob
-    // delete p1;
-    // delete p2;
-    // delete src;
-    // }
+    src->learnMateria(new Ice());
+    tmp = src->createMateria("ice");
+    // si equipamos p1, no hace falta hacer un delete porque p1 borra sus materias
+    // en caso contrario, como tmp no se usa, hay que hacer un delete
+    p1->equip(tmp); // Ice ice used on bob
+    p1->use(0, *p2); // Ice ice used on bob
+    p2->use(0, *p1); // Ice ice used on bob
+    delete p1;
+    delete p2;
+    delete src;
+    }
 
-    // std::cout << std::endl;
-    // std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
     
-    // // Utilizar p1 sin haber creado una materia
-    // {
-    // ICharacter  *p1 = new Character("Player_1");
-    // ICharacter  *p2 = new Character("Player_2");
-
-    // p1->use(0, *p2); // Ice ice used on bob
-    // delete p1;
-    // delete p2;
-    // }
     return (0);
 }

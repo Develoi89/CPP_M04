@@ -18,12 +18,5 @@ delete meta;
 delete j;
 delete i;
 
-// Dog Pluto; 
-// Cat Felix;
-
-// std::cout << Pluto.getType() << " Says ";
-// Pluto.makeSound();
-// std::cout << Felix.getType() << " Says ";
-// Felix.makeSound();
 return 0;
 }

@@ -25,7 +25,10 @@ Brain & Brain::operator =(Brain const & c)
 
 std::string Brain::getIdea(int i)
 {
-    return _ideas[i];
+    if(_ideas[i][0])
+        return _ideas[i];
+    else   
+        return ("no one");
 }
 
 void Brain::setIdea(int i, std::string idea)

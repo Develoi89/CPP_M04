@@ -14,7 +14,7 @@ class AMateria
 
         std::string                     _type;
         AMateria*                       _next;
-        static AMateria*               _head;
+        static AMateria*                _head;
 
     public:
 

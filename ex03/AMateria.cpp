@@ -70,16 +70,16 @@ void AMateria::unequip()
 
 AMateria::~AMateria()
 {
-    if (_head)
-    {
-        while ((_head != NULL) && (_head->_next != NULL))
-        {
-            AMateria* actual = _head;
-            while (actual->getNext() != NULL)
-                actual = actual->getNext();
-            delete actual;
-        }
-        if((_head->_next == NULL) && (_head != NULL))
-            delete _head;
-    }
+    // if (_head)
+    // {
+    //     while ((_head != NULL) && (_head->_next != NULL))
+    //     {
+    //         AMateria* actual = _head;
+    //         while (actual->getNext() != NULL)
+    //             actual = actual->getNext();
+    //         delete actual;
+    //     }
+    //     if((_head->_next == NULL) && (_head != NULL))
+    //         delete _head;
+    // }
 }
