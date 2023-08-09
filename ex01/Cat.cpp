@@ -6,9 +6,13 @@ Cat::Cat(): _catBrain(new Brain())
     std::cout << "Cat class created." << std::endl;
 }
 
-Cat::Cat(Cat const & c)
+Cat::Cat(Cat const & c): _catBrain(new Brain())
 {
     _type = c._type;
+    for (size_t i = 0; i < 100; i++)
+    {
+        _catBrain->setIdea(i, c._catBrain->getIdea(i));
+    }
     std::cout << "Cat class created from another class." << std::endl;
 }
 

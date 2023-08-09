@@ -6,9 +6,13 @@ Dog::Dog(): _dogBrain(new Brain())
     std::cout << "Dog class created." << std::endl;
 }
 
-Dog::Dog(Dog const &c)
+Dog::Dog(Dog const &c): _dogBrain(new Brain())
 {
     _type = c._type;
+    for (size_t i = 0; i < 100; i++)
+    {
+        _dogBrain->setIdea(i, c._dogBrain->getIdea(i));
+    }
     std::cout << "Dog class created from another class." << std::endl;
 }
 

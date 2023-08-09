@@ -34,6 +34,6 @@ int main()
     std::cout << "idea number 1 of Pluto is: " << Pluto.getIdea(1) << std::endl;
     Snoopy = Pluto;
     std::cout << "idea number 1 of Snoopy is: " << Snoopy.getIdea(1) << std::endl;
-
+    //AAnimal test;
     return 0;
 }
